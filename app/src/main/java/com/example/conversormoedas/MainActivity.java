@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         this.mViewHolder.editValue = findViewById(R.id.edit_value);
+        this.mViewHolder.editValueDolar = findViewById(R.id.edit_value_dolar);
+        this.mViewHolder.editValuePeso = findViewById(R.id.edit_value_peso);
         this.mViewHolder.textDolar = findViewById(R.id.text_dolar);
         this.mViewHolder.textPeso = findViewById(R.id.text_peso);
         this.mViewHolder.buttonCalculate = findViewById(R.id.button_calculate);
@@ -33,13 +35,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v.getId() == R.id.button_calculate) {
             String value = this.mViewHolder.editValue.getText().toString();
+            String valueDolar = this.mViewHolder.editValueDolar.getText().toString();
+            String valuePeso = this.mViewHolder.editValuePeso.getText().toString();
+
             if ("".equals(value)) {
                 Toast.makeText(this, this.getString(R.string.informe_um_valor), Toast.LENGTH_LONG).show();
             } else {
                 Double real = Double.valueOf(value);
+                Double coatacaoDolar = Double.valueOf(valueDolar);
+                Double cotacaoPeso = Double.valueOf(valuePeso);
 
-                this.mViewHolder.textDolar.setText(String.format("%.2f", real / 5.30));
-                this.mViewHolder.textPeso.setText(String.format("%.2f", real * 160.94));
+                this.mViewHolder.textDolar.setText(String.format("%.2f", real / coatacaoDolar));
+                this.mViewHolder.textPeso.setText(String.format("%.2f", real * cotacaoPeso));
             }
         }
     }
@@ -51,6 +58,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private static class ViewHolder {
         EditText editValue;
+        EditText editValueDolar;
+        EditText editValuePeso;
         TextView textDolar;
         TextView textPeso;
         Button buttonCalculate;
