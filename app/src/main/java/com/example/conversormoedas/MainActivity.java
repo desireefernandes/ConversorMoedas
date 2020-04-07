@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         this.mViewHolder.editValue = findViewById(R.id.edit_value);
         this.mViewHolder.textDolar = findViewById(R.id.text_dolar);
-        this.mViewHolder.textEuro = findViewById(R.id.text_euro);
+        this.mViewHolder.textPeso = findViewById(R.id.text_peso);
         this.mViewHolder.buttonCalculate = findViewById(R.id.button_calculate);
 
         this.mViewHolder.buttonCalculate.setOnClickListener(this);
@@ -39,20 +39,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Double real = Double.valueOf(value);
 
                 this.mViewHolder.textDolar.setText(String.format("%.2f", real / 5.30));
-                this.mViewHolder.textEuro.setText(String.format("%.2f", real / 5.72));
+                this.mViewHolder.textPeso.setText(String.format("%.2f", real * 160.94));
             }
         }
     }
 
     private void clearValues() {
         this.mViewHolder.textDolar.setText("");
-        this.mViewHolder.textEuro.setText("");
+        this.mViewHolder.textPeso.setText("");
     }
 
     private static class ViewHolder {
         EditText editValue;
         TextView textDolar;
-        TextView textEuro;
+        TextView textPeso;
         Button buttonCalculate;
     }
 }
