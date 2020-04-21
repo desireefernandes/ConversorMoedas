@@ -1,114 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:layout_margin="16dp"
-    tools:context=".MainActivity"
-    tools:ignore="ExtraText">
+    tools:context=".MainActivity">
 
-    <!--Valor informado-->
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/inform_value"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="25sp"
-        android:layout_marginTop="8dp"
+        android:text="@string/informe_o_valor"
         android:textColor="@color/colorBlack"
-        android:text="@string/informe_o_valor" />
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/edit_value"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="8dp"
-        android:textColor="@color/colorBlack"
+        android:text=" "
         android:textAlignment="center"
-        android:text=" " />
-
-    <!--Cotação dolar-->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="16sp"
-        android:layout_marginTop="20dp"
         android:textColor="@color/colorBlack"
-        android:text="@string/cotacao_dolar" />
+        app:layout_constraintEnd_toEndOf="@+id/inform_value"
+        app:layout_constraintStart_toStartOf="@+id/inform_value"
+        app:layout_constraintTop_toBottomOf="@+id/inform_value" />
+
+    <TextView
+        android:id="@+id/quotation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:gravity="center"
+        android:text="@string/qual_a_cotacao"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_value" />
+
+    <TextView
+        android:id="@+id/dolar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/cotacao_dolar"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/edit_value_dolar"
+        app:layout_constraintEnd_toEndOf="@+id/edit_value_dolar"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/edit_value_dolar"
+        app:layout_constraintTop_toBottomOf="@+id/quotation" />
 
     <EditText
         android:id="@+id/edit_value_dolar"
-        android:layout_width="100dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="8dp"
-        android:textColor="@color/colorBlack"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="23dp"
+        android:text=" "
         android:textAlignment="center"
-        android:text=" " />
-
-    <!--Cotação peso-->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="16sp"
         android:textColor="@color/colorBlack"
-        android:text="@string/cotacao_peso" />
+        app:layout_constraintBottom_toTopOf="@+id/value"
+        app:layout_constraintEnd_toStartOf="@+id/edit_value_peso"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/value_peso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/cotacao_peso"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/edit_value_peso"
+        app:layout_constraintStart_toStartOf="@+id/edit_value_peso"
+        app:layout_constraintTop_toBottomOf="@+id/quotation" />
 
     <EditText
         android:id="@+id/edit_value_peso"
-        android:layout_width="100dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textColor="@color/colorBlack"
+        android:layout_marginEnd="32dp"
+        android:text=" "
         android:textAlignment="center"
-        android:text=" " />
+        android:textColor="@color/colorBlack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/edit_value_dolar"
+        app:layout_constraintTop_toBottomOf="@+id/value_peso" />
 
-    <!--Valores-->
     <TextView
+        android:id="@+id/value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        android:gravity="center"
+        android:text="Valores"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_value" />
+
+    <TextView
+        android:id="@+id/text_dolar1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginStart="91dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="91dp"
+        android:text="@string/valor_em_dolar"
         android:textColor="@color/colorBlack"
-        android:layout_marginTop="20dp"
         android:textSize="20sp"
-        android:text="@string/valor_em_dolar" />
+        app:layout_constraintEnd_toStartOf="@+id/text_peso1"
+        app:layout_constraintStart_toStartOf="@+id/value"
+        app:layout_constraintTop_toBottomOf="@+id/value" />
 
     <TextView
         android:id="@+id/text_dolar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="1dp"
+        android:text="@string/valor_em_dolar"
         android:textSize="20dp"
-        android:text="@string/valor_em_dolar" />
+        app:layout_constraintStart_toStartOf="@+id/text_dolar1"
+        app:layout_constraintTop_toBottomOf="@+id/text_dolar1" />
 
     <TextView
+        android:id="@+id/text_peso1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/valor_em_peso"
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
-        android:text="@string/valor_em_peso" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/value" />
 
     <TextView
         android:id="@+id/text_peso"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:text="@string/valor_em_peso"
         android:textSize="20sp"
-        android:text="@string/valor_em_peso" />
+        app:layout_constraintStart_toStartOf="@+id/text_peso1"
+        app:layout_constraintTop_toBottomOf="@+id/text_peso1" />
 
-    <!--Botão-->
     <Button
         android:id="@+id/button_calculate"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/calcular"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:background="@color/colorPrimary"
-        android:textColor="@color/colorWhite"/>
+        android:text="@string/calcular"
+        android:textColor="@color/colorWhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_dolar" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

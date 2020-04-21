@@ -11,32 +11,49 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private ViewHolder mViewHolder = new ViewHolder();
+    private EditText editValue;
+    private EditText editValueDolar;
+    private EditText editValuePeso;
+    private TextView textDolar;
+    private TextView textPeso;
+    private Button buttonCalculate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        this.mViewHolder.editValue = findViewById(R.id.edit_value);
-        this.mViewHolder.editValueDolar = findViewById(R.id.edit_value_dolar);
-        this.mViewHolder.editValuePeso = findViewById(R.id.edit_value_peso);
-        this.mViewHolder.textDolar = findViewById(R.id.text_dolar);
-        this.mViewHolder.textPeso = findViewById(R.id.text_peso);
-        this.mViewHolder.buttonCalculate = findViewById(R.id.button_calculate);
+        editValue = findViewById(R.id.edit_value);
+        editValueDolar = findViewById(R.id.edit_value_dolar);
+        editValuePeso = findViewById(R.id.edit_value_peso);
+        textDolar = findViewById(R.id.text_dolar);
+        textPeso = findViewById(R.id.text_peso);
+        buttonCalculate = findViewById(R.id.button_calculate);
 
-        this.mViewHolder.buttonCalculate.setOnClickListener(this);
+        buttonCalculate.setOnClickListener(this);
 
         this.clearValues();
 
     }
 
+    private void clearValues() {
+        textDolar.setText("");
+        textPeso.setText("");
+    }
+
     @Override
     public void onClick(View v) {
+        editValue.getText();
+        editValueDolar.getText();
+        editValuePeso.getText();
+        textDolar.getText();
+        textPeso.getText();
+        buttonCalculate.getBottom();
+
         if (v.getId() == R.id.button_calculate) {
-            String value = this.mViewHolder.editValue.getText().toString();
-            String valueDolar = this.mViewHolder.editValueDolar.getText().toString();
-            String valuePeso = this.mViewHolder.editValuePeso.getText().toString();
+            String value = editValue.getText().toString();
+            String valueDolar = editValueDolar.getText().toString();
+            String valuePeso = editValuePeso.getText().toString();
 
             if ("".equals(value)) {
                 Toast.makeText(this, this.getString(R.string.informe_um_valor), Toast.LENGTH_LONG).show();
@@ -45,23 +62,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Double coatacaoDolar = Double.valueOf(valueDolar);
                 Double cotacaoPeso = Double.valueOf(valuePeso);
 
-                this.mViewHolder.textDolar.setText(String.format("%.2f", real / coatacaoDolar));
-                this.mViewHolder.textPeso.setText(String.format("%.2f", real * cotacaoPeso));
+                textDolar.setText(String.format("%.2f", real / coatacaoDolar));
+                textPeso.setText(String.format("%.2f", real * cotacaoPeso));
             }
         }
     }
 
-    private void clearValues() {
-        this.mViewHolder.textDolar.setText("");
-        this.mViewHolder.textPeso.setText("");
-    }
-
-    private static class ViewHolder {
-        EditText editValue;
-        EditText editValueDolar;
-        EditText editValuePeso;
-        TextView textDolar;
-        TextView textPeso;
-        Button buttonCalculate;
-    }
 }
